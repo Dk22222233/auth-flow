@@ -1,4 +1,5 @@
 import 'package:easy_auth_module/auth/core/requests/signup_request.dart';
+import 'package:easy_auth_module/auth/state/auth_controller_provider.dart';
 import 'package:easy_auth_module/auth/validation/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,6 +28,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
         password: password,
         name: name,
       );
+      ref.read(authControllerProvider.notifier).signup(signupRequest);
 
       //  using the name, email, password to make a signup request
     }

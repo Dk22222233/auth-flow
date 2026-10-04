@@ -1,4 +1,5 @@
 import 'package:easy_auth_module/auth/core/requests/login_request.dart';
+import 'package:easy_auth_module/auth/state/auth_controller_provider.dart';
 import 'package:easy_auth_module/auth/validation/validators.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         email: email,
         password: password,
       );
+      ref.read(authControllerProvider.notifier).login(loginRequest);
     }
   }
 
