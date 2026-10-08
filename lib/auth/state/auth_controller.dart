@@ -17,7 +17,7 @@ class AuthController extends Notifier<AuthState> {
     state = AuthState(status: AuthStatus.loading);
 
     final result = await _authService.login(request);
-    if (result.inSuccess) {
+    if (result.isSuccess) {
       state = AuthState(status: AuthStatus.authenticated, user: result.user);
     } else {
       state = AuthState(status: AuthStatus.error, error: result.error);
@@ -27,7 +27,7 @@ class AuthController extends Notifier<AuthState> {
   Future<void> signup(SignupRequest request) async {
     state = AuthState(status: AuthStatus.loading);
     final result = await _authService.signup(request);
-    if (result.inSuccess) {
+    if (result.isSuccess) {
       state = AuthState(status: AuthStatus.authenticated, user: result.user);
     } else {
       state = AuthState(status: AuthStatus.error, error: result.error);

@@ -6,7 +6,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_auth_module/auth/ui/widgets/auth_text_field.dart';
 
 class SignupScreen extends ConsumerStatefulWidget {
-  const SignupScreen({super.key});
+  final VoidCallback? onSignupTap;
+  final VoidCallback? onForgotPasswordTap;
+  final VoidCallback? onLogin;
+  const SignupScreen({
+    super.key,
+    this.onForgotPasswordTap,
+    this.onSignupTap,
+    this.onLogin,
+  });
 
   @override
   ConsumerState<SignupScreen> createState() => _SignupScreenState();
@@ -76,6 +84,15 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                     passwordController.text,
                   );
                 },
+              ),
+              TextButton(
+                onPressed: widget.onSignupTap,
+                child: const Text('Signup'),
+              ),
+              TextButton(onPressed: widget.onLogin, child: const Text('Login')),
+              TextButton(
+                onPressed: widget.onForgotPasswordTap,
+                child: const Text('Forgot Password'),
               ),
             ],
           ),

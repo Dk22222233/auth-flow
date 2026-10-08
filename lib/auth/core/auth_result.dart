@@ -11,5 +11,5 @@ class AuthResult {
   factory AuthResult.failure(AuthError error) {
     return AuthResult(error: error);
   }
-  bool get inSuccess => error == null;
+  bool get isSuccess => error == null;
 }

@@ -6,7 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:easy_auth_module/auth/ui/widgets/auth_text_field.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({super.key});
+  final VoidCallback? onSignupTap;
+  final VoidCallback? onForgotPasswordTap;
+  final VoidCallback? onLogin;
+  const LoginScreen({
+    super.key,
+    this.onForgotPasswordTap,
+    this.onSignupTap,
+    this.onLogin,
+  });
 
   @override
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
@@ -52,6 +60,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 obscureText: true,
                 controller: passwordController,
                 validator: AuthValidators.validatePassword,
+              ),
+              TextButton(
+                onPressed: widget.onSignupTap,
+                child: const Text('Signup'),
+              ),
+              TextButton(onPressed: widget.onLogin, child: const Text('Login')),
+              TextButton(
+                onPressed: widget.onForgotPasswordTap,
+                child: const Text('Forgot Password'),
               ),
             ],
           ),
